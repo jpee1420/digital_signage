@@ -242,8 +242,9 @@ $successMessages = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Signage Manager</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="css/font-awesome/all.min.css" rel="stylesheet">
     <style>
         .draggable {
             cursor: move;
@@ -559,9 +560,9 @@ $successMessages = [
     </div>
     
     <script src="js/bootstrap.bundle.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="sortable/Sortable.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
     <script>
         document.getElementById('contentType').addEventListener('change', function() {
             const fileUpload = document.getElementById('fileUpload');
