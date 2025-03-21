@@ -242,10 +242,33 @@ $successMessages = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Signage Manager</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Use only local Font Awesome -->
     <link href="css/font-awesome/all.min.css" rel="stylesheet">
     <style>
+        /* Fix specific Font Awesome icons that aren't displaying */
+        .fa-grip-vertical:before {
+            content: "\f58e";
+        }
+        
+        .fa-globe:before {
+            content: "\f0ac";
+        }
+        
+        .fas {
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+        
+        /* Define the font path to ensure icons load correctly */
+        @font-face {
+            font-family: 'Font Awesome 6 Free';
+            font-style: normal;
+            font-weight: 900;
+            font-display: block;
+            src: url("webfonts/fa-solid-900.woff2") format("woff2"),
+                 url("webfonts/fa-solid-900.ttf") format("truetype");
+        }
+        
         .draggable {
             cursor: move;
         }
@@ -560,9 +583,7 @@ $successMessages = [
     </div>
     
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="sortable/Sortable.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
     <script>
         document.getElementById('contentType').addEventListener('change', function() {
             const fileUpload = document.getElementById('fileUpload');

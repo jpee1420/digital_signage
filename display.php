@@ -70,6 +70,7 @@ $media = $stmt->fetchAll(PDO::FETCH_ASSOC);
         const contents = document.querySelectorAll('.content');
         let currentIndex = -1; // Start at -1 so first showNext() will show index 0
         let currentTimeout = null;
+        const bufferTime = 1000; // 1 second buffer time in milliseconds
 
         function showNext() {
             // Clear any existing timeout
@@ -82,6 +83,16 @@ $media = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 contents[currentIndex].classList.remove('active');
             }
             
+            // Add buffer time before showing next content
+            // For the first item, don't add buffer
+            if (currentIndex >= 0) {
+                setTimeout(showNextContent, bufferTime);
+            } else {
+                showNextContent();
+            }
+        }
+        
+        function showNextContent() {
             // Move to next content
             currentIndex = (currentIndex + 1) % contents.length;
             
@@ -103,7 +114,7 @@ $media = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 video.onended = showNext;
                 video.onerror = function() {
                     console.log("Video error occurred");
-                    currentTimeout = setTimeout(showNext, 1000);
+                    currentTimeout = setTimeout(showNext, bufferTime);
                 };
                 return;
             }
