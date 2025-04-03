@@ -53,7 +53,6 @@ $media = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <video src="<?= htmlspecialchars($item['path']) ?>" 
                        controls="false"
                        autoplay 
-                       muted 
                        playsinline
                        preload="auto">
                     Your browser does not support the video tag.
