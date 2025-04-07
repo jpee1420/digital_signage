@@ -1,6 +1,29 @@
 <?php
 require_once 'config.php';
 
+// If installation is needed, redirect to the installation wizard
+if (defined('DB_NEEDS_INSTALLATION') && DB_NEEDS_INSTALLATION === true) {
+    header('Location: ' . BASE_URL . '/install/index.php');
+    exit;
+}
+
+// If there's a database connection error, redirect to the installation wizard
+if (defined('DB_CONNECTION_ERROR') && DB_CONNECTION_ERROR === true) {
+    header('Location: ' . BASE_URL . '/install/index.php');
+    exit;
+}
+
+// Initialize PDO connection using the variables from config.php
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    error_log("PDO connection error: " . $e->getMessage());
+    // Redirect to installation wizard
+    header('Location: ' . BASE_URL . '/install/index.php');
+    exit;
+}
+
 $deletion_status = 'success';
 $error_message = '';
 

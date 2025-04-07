@@ -1,0 +1,24 @@
+# Protect the installation directory after installation is complete
+# Uncomment the lines below to block access to the install directory
+# Will need to be uncommented manually after successful installation
+
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{REQUEST_URI} !test_connection\.php$ [NC]
+#     RewriteRule .* /cmss/index.php [R=301,L]
+# </IfModule>
+
+# Alternative protection using FilesMatch
+# <FilesMatch "^(?!test_connection\.php$).*$">
+#     Order allow,deny
+#     Deny from all
+# </FilesMatch>
+
+# Keep the test_connection.php accessible for future troubleshooting
+<Files "test_connection.php">
+    Order allow,deny
+    Allow from all
+</Files>
+
+# Prevent directory listing
+Options -Indexes 
